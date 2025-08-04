@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './config/dbConfig.js';
 import apiRouter from './routers/apiRouter.js';
+import { isAuthenticated } from './middlewares/authMiddleware.js';
 
 const PORT = 3000; // Port number
  
@@ -12,10 +13,11 @@ app.use(express.urlencoded()); // Middleware to parse URL-encoded request bodies
 
 app.use('/api', apiRouter); // If the url starts with /api then the request is forwarded to the apiRouter
 
-app.get('/', (req, res) => {
+app.get('/ping', isAuthenticated, (req, res) => {
     console.log(req.query);
     console.log(req.body);
-    return res.send('Home');
+    console.log(req.user);
+    return res.json({ message: "pong" });
 });
 
 app.listen(PORT, () => {

@@ -1,4 +1,3 @@
-import { success } from 'zod';
 import { signinUserService, signupUserService } from '../services/userService.js';
 
 export async function getProfile(req, res) {
