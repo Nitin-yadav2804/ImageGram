@@ -10,10 +10,22 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userId: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ],
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Like"
+        }
+    ]
 }, { timestamps: true }); // timestamps will add createdAt and updatedAt fields automatically
 
 const post = mongoose.model("Post", postSchema); // post selection

@@ -1,7 +1,6 @@
 import express from 'express';
 import connectDB from './config/dbConfig.js';
 import apiRouter from './routers/apiRouter.js';
-import { isAuthenticated } from './middlewares/authMiddleware.js';
 
 const PORT = 3000; // Port number
  
